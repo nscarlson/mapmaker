@@ -1,0 +1,38 @@
+machine:
+    environment:
+        PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+    node:
+        version: 6.1.0
+    services:
+        - docker
+
+dependencies:
+    override:
+        - yarn
+        - yarn build
+        - docker info
+        - docker build --rm=false -t nscarlson/crlsn-npm -f Dockerfile.npm .
+        - docker build --rm=false -t nscarlson/crlsn .
+    cache_directories:
+        - ~/.cache/yarn
+
+test:
+    override:
+#        - yarn lint
+        - yarn test
+
+deployment:
+    production:
+        branch: master
+    staging:
+        branch: develop
+        commands:
+            - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+            - docker push nscarlson/crlsn-npm
+            - docker push nscarlson/crlsn
+    hub:
+        branch: master
+        commands:
+            - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+            - docker push nscarlson/crlsn-npm
+            - docker push nscarlson/crlsn

@@ -1,0 +1,26 @@
+{
+  "name": "crlsn.io",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Tyler McGinnis <tylermcginnis33@gmail.com> (http://tylermcginnis.com)"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/nscarlson/crlsn.io",
+  "moduleType": [
+    "es6",
+    "node"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/bower_components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "marked": "^0.3.5"
+  }
+}
