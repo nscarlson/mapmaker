@@ -117,6 +117,7 @@
     "express-session": "^1.15.1",
     "express-xml-bodyparser": "^0.3.0",
     "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.11.1",
     "history": "^4.6.0",
     "jest-cli": "^19.0.2",
     "keymirror": "^0.1.1",
